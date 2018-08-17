@@ -1,0 +1,23 @@
+{
+  "name": "sb-backend",
+  "version": "1.0.0",
+  "description": "Back-end for Stampbook",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nc-ateam/sb-be.git"
+  },
+  "author": "Stampbook team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nc-ateam/sb-be/issues"
+  },
+  "homepage": "https://github.com/nc-ateam/sb-be#readme",
+  "devDependencies": {
+    "eslint": "^5.3.0",
+    "eslint-plugin-react": "^7.11.1"
+  }
+}
