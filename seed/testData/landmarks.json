@@ -1,0 +1,12 @@
+[
+  {
+    "landmark": "Manchester Picadilly",
+    "geolocation": {
+      "geolocation": "[40, 20]",
+      "georadius": "10"
+    },
+    "picture_url": "www.pictureurl.com",
+    "info": "www.wikipedia.com",
+    "belongs_to": "Manchester"
+  }
+]
