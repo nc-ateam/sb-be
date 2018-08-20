@@ -24,4 +24,16 @@ const getPhotoByID = (req, res, next) => {
         .catch(next);
 };
 
-module.exports = { getAllPhotos, getPhotoByID };
+const getPhotosByUserID = (req, res, next) => {
+    Photo.find({ belongs_to_user: { _id: req.params.user_id } })
+        .populate('belongs_to_user')
+        .populate('belongs_to_city')
+        .populate('belongs_to_landmarks')
+        .lean()
+        .then((photos) => {
+            res.status(200).send({ photos });
+        })
+        .catch(next);
+};
+
+module.exports = { getAllPhotos, getPhotoByID, getPhotosByUserID };
