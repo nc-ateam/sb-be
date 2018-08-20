@@ -17,6 +17,8 @@ mongoose
     return seedDB(data);
   })
   .then(() => {
-    console.log(`Countries, cities and landmarks seed complete.`);
+    console.log(
+      `Seeding of countries, cities, landmarks, users and photos complete.`
+    );
     return mongoose.disconnect();
   });

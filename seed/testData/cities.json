@@ -1,6 +1,14 @@
-[{
-  "city": "Manchester",
-  "geolocation": "[40, 20]",
-  "picture_url": "www.pictureurl.com",
-  "belongs_to": "United Kingdom"
-}]
+[
+  {
+    "city": "Manchester",
+    "geolocation": "[53.4808, -2.2426]",
+    "picture_url": "www.pictureurl.com",
+    "belongs_to": "United Kingdom"
+  },
+  {
+    "city": "Broadbottom",
+    "geolocation": "[53.4405305, -2.0215345]",
+    "picture_url": "www.pictureurl.com",
+    "belongs_to": "United Kingdom"
+  }
+]

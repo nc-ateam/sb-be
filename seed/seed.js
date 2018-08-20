@@ -1,15 +1,23 @@
 const mongoose = require("mongoose");
 mongoose.Promise = Promise;
-const { City, Country, Landmark } = require("../models");
+const { City, Country, Landmark, Photo, User } = require("../models");
 const {
   formatData,
   formatSingleCountry,
   formatRef,
   formatCityData,
-  formatLandmarkData
+  formatLandmarkData,
+  formatSingleUser,
+  formatPhotoData
 } = require("../utils/index");
 
-const seedDB = ({ citiesData, countriesData, landmarksData }) => {
+const seedDB = ({
+  citiesData,
+  countriesData,
+  landmarksData,
+  photosData,
+  usersData
+}) => {
   return mongoose.connection
     .dropDatabase()
     .then(() => {
@@ -22,10 +30,26 @@ const seedDB = ({ citiesData, countriesData, landmarksData }) => {
       return Promise.all([City.insertMany(formattedCityData)]);
     })
     .then(([cityDocs]) => {
-      let cityRef = formatRef(citiesData, cityDocs)
-      const formattedLandmarkData= formatLandmarkData(landmarksData, cityRef)
-      return Promise.all([Landmark.insertMany(formattedLandmarkData)]);
-    }).catch(console.log)
+      let cityRef = formatRef(citiesData, cityDocs);
+      const formattedUserData = formatData(usersData, formatSingleUser);
+      const formattedLandmarkData = formatLandmarkData(landmarksData, cityRef);
+      return Promise.all([
+        Landmark.insertMany(formattedLandmarkData),
+        User.insertMany(formattedUserData),
+        cityRef
+      ]).then(([landmarkDocs, userDocs, cityRef]) => {
+        let userRef = formatRef(usersData, userDocs);
+        let landmarkRef = formatRef(landmarksData, landmarkDocs);
+        const formattedPhotoData = formatPhotoData(
+          photosData,
+          landmarkRef,
+          userRef,
+          cityRef
+        );
+        return Promise.all([Photo.insertMany(formattedPhotoData)]);
+      });
+    })
+    .catch(console.log);
 };
 
 module.exports = seedDB;
