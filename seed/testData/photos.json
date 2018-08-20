@@ -2,7 +2,7 @@
   {
     "belongs_to_user": "demoUser123",
     "belongs_to_city": "Manchester",
-    "belongs_to_landmark": "Manchester Piccadilly",
+    "belongs_to_landmark": "Manchester Piccadilly Station",
     "firebase_url": "www.pictureurl.com"
   },
   {
