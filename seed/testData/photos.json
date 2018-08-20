@@ -1,0 +1,20 @@
+[
+  {
+    "belongs_to_user": "demoUser123",
+    "belongs_to_city": "Manchester",
+    "belongs_to_landmark": "Manchester Piccadilly",
+    "firebase_url": "www.pictureurl.com"
+  },
+  {
+    "belongs_to_user": "demoUserABC",
+    "belongs_to_city": "Manchester",
+    "belongs_to_landmark": "Northcoders",
+    "firebase_url": "http://insight-rec.com/wp-content/uploads/2017/09/Northcoders-Graduate-photo-e1505755116690.jpg"
+  },
+  {
+    "belongs_to_user": "demoUserABC",
+    "belongs_to_city": "Broadbottom",
+    "belongs_to_landmark": "Lymefield Centre",
+    "firebase_url": "http://reviewnewspapers.co.uk/_images/business-directory/logos/l/lgo_lymefield_01.jpg"
+  }
+]

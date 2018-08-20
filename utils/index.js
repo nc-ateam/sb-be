@@ -2,6 +2,10 @@ const formatSingleCountry = countryDatum => {
   return { ...countryDatum };
 };
 
+const formatSingleUser = UserDatum => {
+  return { ...UserDatum };
+};
+
 const formatData = (data, formatter) => {
   return data.map(formatter);
 };
@@ -14,6 +18,12 @@ const formatRef = (data, docs) => {
     if (current.city) {
       acc[current.city] = docs[index]._id;
     }
+    if (current.username) {
+      acc[current.username] = docs[index]._id;
+    }
+    if (current.landmark) {
+      acc[current.landmark] = docs[index]._id;
+    }
     return acc;
   }, {});
 };
@@ -24,6 +34,22 @@ const formatCityData = (citiesData, countryRef) => {
     return {
       ...cityDatum,
       belongs_to: exchangeIDs(country, countryRef)
+    };
+  });
+};
+
+const formatPhotoData = (photosData, landmarkRef, userRef, cityRef) => {
+  return photosData.map(photoDatum => {
+    const {
+      belongs_to_user: user,
+      belongs_to_city: city,
+      belongs_to_landmark: landmark
+    } = photoDatum;
+    return {
+      ...photoDatum,
+      belongs_to_user: exchangeIDs(user, userRef),
+      belongs_to_city: exchangeIDs(city, cityRef),
+      belongs_to_landmark: exchangeIDs(landmark, landmarkRef)
     };
   });
 };
@@ -44,11 +70,12 @@ const exchangeIDs = (oldItem, ref) => {
   }
 };
 
-
 module.exports = {
   formatData,
   formatSingleCountry,
   formatRef,
   formatCityData,
-  formatLandmarkData
+  formatLandmarkData,
+  formatSingleUser,
+  formatPhotoData
 };

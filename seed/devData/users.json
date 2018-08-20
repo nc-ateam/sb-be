@@ -1,0 +1,32 @@
+[
+  {
+    "username": "demoUser123",
+    "picture_url": null,
+    "fullname": "John Smith",
+    "email": "test123@hotmail.com"
+  },
+  {
+    "username": "demoUserABC",
+    "picture_url": "https: //vignette.wikia.nocookie.net/disney/images/5/57/Jane_Porter_%28Vector%29.png/revision/latest?cb=20160803151057",
+    "fullname": "Jane Doe",
+    "email": "janeyD123@hotmail.com"
+  },
+  {
+    "username": "brommers",
+    "picture_url": "https://www.tradebit.com/usr/heraldics/pub/9002/bromley-coat-of-arms-98.jpg",
+    "fullname": "Jordan Bromley",
+    "email": "jordBrom@hotmail.com"
+  },
+  {
+    "username": "wrighty9219",
+    "picture_url": "https://www.irishgathering.ie/images/coa/2011/wright_large.gif",
+    "fullname": "Chris Wright",
+    "email": "wrightmight@hotmail.com"
+  },
+  {
+    "username": "jHarrin90",
+    "picture_url": "http://www.familycrestuk.com/communities/0/004/009/310/260//images/4570785484.jpg",
+    "fullname": "John Harrington",
+    "email": "harringtonbarrington@hotmail.com"
+  }
+]
