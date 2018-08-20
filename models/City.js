@@ -7,7 +7,7 @@ const CitySchema = new Schema({
         required: true
     },
     geolocation: {
-        type: String,
+        type: Array,
         required: true
     },
     picture_url: {

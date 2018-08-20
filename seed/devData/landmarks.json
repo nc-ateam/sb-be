@@ -2,7 +2,7 @@
   {
     "landmark": "Manchester Piccadilly Station",
     "geolocation": {
-      "geolocation": "[-2.2309113, 53.4774049]",
+      "geolocation": ["-2.2309113", "53.4774049"],
       "georadius": "10"
     },
     "picture_url": "www.pictureurl.com",
@@ -12,7 +12,7 @@
   {
     "landmark": "Northcoders",
     "geolocation": {
-      "geolocation": "[-2.2349801, 53.4816456,]",
+      "geolocation": ["-2.2349801", "53.4816456,"],
       "georadius": "10"
     },
     "picture_url": "https://cdn-images-1.medium.com/max/1200/1*LdnSztHVYhhd8K8EqlgCJQ.png",
@@ -22,7 +22,7 @@
   {
     "landmark": "Lymefield Centre",
     "geolocation": {
-      "geolocation": "[-2.0215345, 53.4405305]",
+      "geolocation": ["-2.0215345", "53.4405305"],
       "georadius": "10"
     },
     "picture_url": "https://lh5.googleusercontent.com/p/AF1QipPctOsdRwCQUbPIO4-snLMN4gJBhywpk3tWod_q=w408-h306-k-no",
@@ -32,7 +32,7 @@
   {
     "landmark": "Etihad Stadium",
     "geolocation": {
-      "geolocation": "[-2.2935023, 53.472225]",
+      "geolocation": ["-2.2935023", "53.472225"],
       "georadius": "10"
     },
     "picture_url": "https://mediacdn.mancity.com/-/media/galleries/general/season-1617/new-badge/webmanchestercityscrestisondisplayintheetihadstadiuma17q8841-copy.ashx?width=1024&height=576",
@@ -42,7 +42,7 @@
   {
     "landmark": "National Football Museum",
     "geolocation": {
-      "geolocation": "[-2.2448552, 53.4755408]",
+      "geolocation": ["-2.2448552", "53.4755408"],
       "georadius": "10"
     },
     "picture_url": "https://img.grouponcdn.com/deal/2MWevXJNwXCaZrUZL7mbiaFWoxa8/2M-2048x1229/v1/c700x420.jpg",
@@ -52,7 +52,7 @@
   {
     "landmark": "Museum of Science and Industry",
     "geolocation": {
-      "geolocation": "[-2.2418309, 53.4763248]",
+      "geolocation": ["-2.2418309", "53.4763248"],
       "georadius": "10"
     },
     "picture_url": "https://c8.alamy.com/comp/A14DW6/manchester-museum-of-science-and-industry-the-steam-hall-A14DW6.jpg",
@@ -62,7 +62,7 @@
   {
     "landmark": "Manchester Art Gallery",
     "geolocation": {
-      "geolocation": "[-2.2418309, 53.4763248]",
+      "geolocation": ["-2.2418309", "53.4763248"],
       "georadius": "10"
     },
     "picture_url": "http://www.weddingdayphotos.co.uk/wp-content/uploads/2012/08/fj_manchester_art_gallery1.jpg",
@@ -72,7 +72,7 @@
   {
     "landmark": "Manchester Central Library",
     "geolocation": {
-      "geolocation": "[-2.2418309, 53.4763248]",
+      "geolocation": ["-2.2418309", "53.4763248"],
       "georadius": "10"
     },
     "picture_url": "http://www.360photosurvey.com/wp-content/uploads/2016/06/Aerial-photographer-Manchester-1.jpg",
@@ -82,21 +82,21 @@
   {
     "landmark": "Piccadilly Gardens",
     "geolocation": {
-      "geolocation": "[-2.2412696, 53.4808958]",
+      "geolocation": ["-2.2412696", "53.4808958"],
       "georadius": "10"
     },
     "picture_url": "https://brightcove04pmdo-a.akamaihd.net/4221396001/4221396001_5308048814001_5308035035001-vs.jpg?pubId=4221396001&videoId=5308035035001",
     "info": "www.en.wikipedia.org/wiki/Piccadilly_Gardens",
     "belongs_to": "Manchester"
-  }, 
-    {
-      "landmark": "The John Rylands Libary",
-      "geolocation": {
-        "geolocation": "[-2.2488212, 53.4803597]",
-        "georadius": "10"
-      },
-      "picture_url": "https://www.google.co.uk/maps/place/The+John+Rylands+Library/@53.4803597,-2.2488212,3a,90y,28.38h,121.45t/data=!3m8!1e1!3m6!1sAF1QipORSFr5TTtwsOmn1XBT9U44HEwlOVKp9J8f-z3N!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipORSFr5TTtwsOmn1XBT9U44HEwlOVKp9J8f-z3N%3Dw203-h100-k-no-pi-28.92708-ya271.5052-ro0-fo100!7i7680!8i3840!4m13!1m7!3m6!1s0x487bb1bf73100639:0x67a100e10acc5a25!2sPiccadilly+Gardens,+Manchester+M60+1AY!3b1!8m2!3d53.4809634!4d-2.2369427!3m4!1s0x487bb1c302125cd1:0x8ecd789c6104b25c!8m2!3d53.4803143!4d-2.2487453#",
-      "info": "http://www.library.manchester.ac.uk/rylands/",
-      "belongs_to": "Manchester"
-    }
+  },
+  {
+    "landmark": "The John Rylands Libary",
+    "geolocation": {
+      "geolocation": ["-2.2488212", "53.4803597"],
+      "georadius": "10"
+    },
+    "picture_url": "https://www.google.co.uk/maps/place/The+John+Rylands+Library/@53.4803597,-2.2488212,3a,90y,28.38h,121.45t/data=!3m8!1e1!3m6!1sAF1QipORSFr5TTtwsOmn1XBT9U44HEwlOVKp9J8f-z3N!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipORSFr5TTtwsOmn1XBT9U44HEwlOVKp9J8f-z3N%3Dw203-h100-k-no-pi-28.92708-ya271.5052-ro0-fo100!7i7680!8i3840!4m13!1m7!3m6!1s0x487bb1bf73100639:0x67a100e10acc5a25!2sPiccadilly+Gardens,+Manchester+M60+1AY!3b1!8m2!3d53.4809634!4d-2.2369427!3m4!1s0x487bb1c302125cd1:0x8ecd789c6104b25c!8m2!3d53.4803143!4d-2.2487453#",
+    "info": "http://www.library.manchester.ac.uk/rylands/",
+    "belongs_to": "Manchester"
+  }
 ]

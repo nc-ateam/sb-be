@@ -1,7 +1,12 @@
 [
   {
     "country": "United Kingdom",
-    "geolocation": "[ 0.1278, 51.5074]",
+    "geolocation": ["0.1278", "51.5074"],
+    "picture_url": "www.pictureurl.com"
+  },
+  {
+    "country": "France",
+    "geolocation": [ "2.2069771", "48.8587741"],
     "picture_url": "www.pictureurl.com"
   }
 ]
