@@ -9,4 +9,13 @@ const getAllCountries = (req, res, next) => {
         .catch(next);
 };
 
-module.exports = { getAllCountries };
+const getCountryByID = (req, res, next) => {
+    Country.findById(req.params.country_id)
+        .lean()
+        .then((country) => {
+            res.status(200).send({ country });
+        })
+        .catch(next);
+};
+
+module.exports = { getAllCountries, getCountryByID };

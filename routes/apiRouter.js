@@ -1,5 +1,5 @@
 const apiRouter = require('express').Router();
-const { countryRouter, cityRouter } = require('./index');
+const { countryRouter, cityRouter, landmarkRouter } = require('./index');
 
 apiRouter.get('/', (req, res, next) => {
     res.status(200).send('This is the api root folder');
@@ -7,5 +7,6 @@ apiRouter.get('/', (req, res, next) => {
 
 apiRouter.use('/countries', countryRouter);
 apiRouter.use('/cities', cityRouter);
+apiRouter.use('/landmarks', landmarkRouter);
 
 module.exports = { apiRouter };
