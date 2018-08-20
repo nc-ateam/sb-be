@@ -1,4 +1,5 @@
 const apiRouter = require('express').Router();
+let path = require('path');
 const {
     countryRouter,
     cityRouter,
@@ -8,7 +9,9 @@ const {
 } = require('./index');
 
 apiRouter.get('/', (req, res, next) => {
-    res.status(200).send('This is the api root folder');
+    res.status(200).sendFile('api.html', {
+        root: path.join('public')
+    });
 });
 
 apiRouter.use('/countries', countryRouter);
