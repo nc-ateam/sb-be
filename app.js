@@ -8,6 +8,8 @@ const { apiRouter } = require('./routes/apiRouter');
 
 app.use(cors());
 
+// useNewUrlParser is set to true as old is being phased out.
+
 mongoose
     .connect(
         DB_URL,
