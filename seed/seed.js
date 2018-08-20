@@ -27,17 +27,17 @@ const seedDB = ({
     .then(([countryDocs]) => {
       let countryRef = formatRef(countriesData, countryDocs);
       const formattedCityData = formatCityData(citiesData, countryRef);
-      return Promise.all([City.insertMany(formattedCityData)]);
+      return Promise.all([City.insertMany(formattedCityData), countryDocs]);
     })
-    .then(([cityDocs]) => {
+    .then(([cityDocs,countryDocs]) => {
       let cityRef = formatRef(citiesData, cityDocs);
       const formattedUserData = formatData(usersData, formatSingleUser);
       const formattedLandmarkData = formatLandmarkData(landmarksData, cityRef);
       return Promise.all([
         Landmark.insertMany(formattedLandmarkData),
         User.insertMany(formattedUserData),
-        cityRef
-      ]).then(([landmarkDocs, userDocs, cityRef]) => {
+        cityRef, cityDocs, countryDocs
+      ]).then(([landmarkDocs, userDocs, cityRef, cityDocs, countryDocs]) => {
         let userRef = formatRef(usersData, userDocs);
         let landmarkRef = formatRef(landmarksData, landmarkDocs);
         const formattedPhotoData = formatPhotoData(
@@ -46,7 +46,13 @@ const seedDB = ({
           userRef,
           cityRef
         );
-        return Promise.all([Photo.insertMany(formattedPhotoData)]);
+        return Promise.all([
+          cityDocs,
+          countryDocs,
+          landmarkDocs,
+          Photo.insertMany(formattedPhotoData),
+          userDocs
+        ]);
       });
     })
     .catch(console.log);
