@@ -20,4 +20,14 @@ const getCityByID = (req, res, next) => {
         .catch(next);
 };
 
-module.exports = { getAllCities, getCityByID };
+const getCitiesByCountryID = (req, res, next) => {
+    City.find({ belongs_to: { _id: req.params.country_id } })
+        .populate('belongs_to')
+        .lean()
+        .then((cities) => {
+            res.status(200).send({ cities });
+        })
+        .catch(next);
+};
+
+module.exports = { getAllCities, getCityByID, getCitiesByCountryID };
