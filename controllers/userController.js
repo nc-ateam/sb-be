@@ -9,4 +9,13 @@ const getAllUsers = (req, res, next) => {
         .catch(next);
 };
 
-module.exports = { getAllUsers };
+const getUserByID = (req, res, next) => {
+    User.findById(req.params.user_id)
+        .lean()
+        .then((user) => {
+            res.status(200).send({ user });
+        })
+        .catch(next);
+};
+
+module.exports = { getAllUsers, getUserByID };
