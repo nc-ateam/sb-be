@@ -19,4 +19,4 @@ body-parser 1.18.3
 
 ## Authors
 
-See the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See the list of [contributors](https://github.com/nc-ateam/sb-be/contributors) who participated in this project.
