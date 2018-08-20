@@ -7,7 +7,7 @@ const LandmarkSchema = new Schema({
         required: true
     },
     geolocation: {
-        type: Array,
+        type: Object,
         required: true
     },
     picture_url: {
