@@ -10,4 +10,14 @@ const getAllCities = (req, res, next) => {
         .catch(next);
 };
 
-module.exports = { getAllCities };
+const getCityByID = (req, res, next) => {
+    City.findById(req.params.city_id)
+        .populate('belongs_to')
+        .lean()
+        .then((city) => {
+            res.status(200).send({ city });
+        })
+        .catch(next);
+};
+
+module.exports = { getAllCities, getCityByID };
