@@ -3,7 +3,8 @@ const {
     countryRouter,
     cityRouter,
     landmarkRouter,
-    userRouter
+    userRouter,
+    photoRouter
 } = require('./index');
 
 apiRouter.get('/', (req, res, next) => {
@@ -14,5 +15,6 @@ apiRouter.use('/countries', countryRouter);
 apiRouter.use('/cities', cityRouter);
 apiRouter.use('/landmarks', landmarkRouter);
 apiRouter.use('/users', userRouter);
+apiRouter.use('/photos', photoRouter);
 
 module.exports = { apiRouter };

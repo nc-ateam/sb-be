@@ -3,5 +3,6 @@ module.exports = {
     countryRouter: require('./countryRouter'),
     cityRouter: require('./cityRouter'),
     landmarkRouter: require('./landmarkRouter'),
-    userRouter: require('./userRouter')
+    userRouter: require('./userRouter'),
+    photoRouter: require('./photoRouter')
 };
