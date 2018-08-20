@@ -16,7 +16,7 @@ const CitySchema = new Schema({
     },
     belongs_to: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'country',
+        ref: 'countries',
         required: true
     }
 });
