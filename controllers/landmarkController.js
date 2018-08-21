@@ -14,6 +14,16 @@ const getAllLandmarks = (req, res, next) => {
         .catch(next);
 };
 
+const getLandmarksByID = (req, res, next) => {
+    Landmark.findById(req.params.landmark_id)
+        .populate('belongs_to')
+        .lean()
+        .then((landmark) => {
+            res.status(200).send({ landmark });
+        })
+        .catch(next);
+};
+
 const getLandmarksByCity = (req, res, next) => {
     const { city_id } = req.params;
 
@@ -36,4 +46,4 @@ const getLandmarksByCity = (req, res, next) => {
         .catch(next);
 };
 
-module.exports = { getAllLandmarks, getLandmarksByCity };
+module.exports = { getAllLandmarks, getLandmarksByCity, getLandmarksByID };
