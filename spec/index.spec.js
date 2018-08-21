@@ -50,10 +50,10 @@ describe("", () => {
               "picture_url"
             );
             expect(res.body.country.country).to.equal("United Kingdom");
-            expect(res.body.country.geolocation).to.be.an("Array");
-            expect(res.body.country.geolocation.length).to.equal(2);
-            expect(res.body.country.geolocation[0]).to.equal("0.1278");
-            expect(res.body.country.geolocation[1]).to.equal("51.5074");
+            expect(res.body.country.geolocation.coordinates).to.be.an("Array");
+            expect(res.body.country.geolocation.coordinates.length).to.equal(2);
+            expect(res.body.country.geolocation.coordinates[0]).to.equal("0.1278");
+            expect(res.body.country.geolocation.coordinates[1]).to.equal("51.5074");
           });
       });
       it("Country3-GET responds 200 and specific country of given country- france", () => {
@@ -70,10 +70,10 @@ describe("", () => {
               "picture_url"
             );
             expect(res.body.country.country).to.equal("France");
-            expect(res.body.country.geolocation).to.be.an("Array");
-            expect(res.body.country.geolocation.length).to.equal(2);
-            expect(res.body.country.geolocation[0]).to.equal("2.2069771");
-            expect(res.body.country.geolocation[1]).to.equal("48.8587741");
+            expect(res.body.country.geolocation.coordinates).to.be.an("Array");
+            expect(res.body.country.geolocation.coordinates.length).to.equal(2);
+            expect(res.body.country.geolocation.coordinates[0]).to.equal("2.2069771");
+            expect(res.body.country.geolocation.coordinates[1]).to.equal("48.8587741");
           });
       });
       it("Country4-GET responds 200 and array of cities is served", () => {
@@ -94,9 +94,9 @@ describe("", () => {
               "city"
             );
             expect(res.body.cities[0].city).to.equal("Manchester");
-            expect(res.body.cities[0].geolocation.length).to.equal(2);
-            expect(res.body.cities[0].geolocation[0]).to.equal("-2.2426");
-            expect(res.body.cities[0].geolocation[1]).to.equal("53.4808");
+            expect(res.body.cities[0].geolocation.coordinates.length).to.equal(2);
+            expect(res.body.cities[0].geolocation.coordinates[0]).to.equal("-2.2426");
+            expect(res.body.cities[0].geolocation.coordinates[1]).to.equal("53.4808");
             expect(res.body.cities[0].belongs_to).to.be.an("Object");
             expect(res.body.cities[0].belongs_to).to.contain.keys(
               "country",
@@ -106,14 +106,14 @@ describe("", () => {
             expect(res.body.cities[0].belongs_to.country).to.equal(
               "United Kingdom"
             );
-            expect(res.body.cities[0].belongs_to.geolocation).to.be.an("Array");
-            expect(res.body.cities[0].belongs_to.geolocation.length).to.equal(
+            expect(res.body.cities[0].belongs_to.geolocation.coordinates).to.be.an("Array");
+            expect(res.body.cities[0].belongs_to.geolocation.coordinates.length).to.equal(
               2
             );
-            expect(res.body.cities[0].belongs_to.geolocation[0]).to.equal(
+            expect(res.body.cities[0].belongs_to.geolocation.coordinates[0]).to.equal(
               "0.1278"
             );
-            expect(res.body.cities[0].belongs_to.geolocation[1]).to.equal(
+            expect(res.body.cities[0].belongs_to.geolocation.coordinates[1]).to.equal(
               "51.5074"
             );
           });
@@ -142,28 +142,18 @@ describe("", () => {
             .then(res => {
               expect(res.body.city).to.be.an("Object");
               expect(res.body).to.contain.keys("city");
-              expect(res.body.city).to.contain.keys(
-                "city",
-                "geolocation",
-                "picture_url"
-              );
+              expect(res.body.city).to.contain.keys("city", "geolocation", "picture_url");
               expect(res.body.city.belongs_to.country).to.equal("United Kingdom");
-              expect(res.body.city.geolocation).to.be.an("Array");
-              expect(res.body.city.geolocation.length).to.equal(2);
-              expect(res.body.city.geolocation[0]).to.equal("-2.2426");
-              expect(res.body.city.geolocation[1]).to.equal("53.4808");
-              expect(res.body.city.belongs_to.geolocation).to.be.an("Array");
-              expect(res.body.city.belongs_to.geolocation.length).to.equal(
-                2
-              );
-              expect(res.body.city.belongs_to.geolocation[0]).to.equal(
-                "0.1278"
-              );
-              expect(res.body.city.belongs_to.geolocation[1]).to.equal(
-                "51.5074"
-              );
-            })
-              })
+              expect(res.body.city.geolocation.coordinates).to.be.an("Array");
+              expect(res.body.city.geolocation.coordinates.length).to.equal(2);
+              expect(res.body.city.geolocation.coordinates[0]).to.equal("-2.2426");
+              expect(res.body.city.geolocation.coordinates[1]).to.equal("53.4808");
+              expect(res.body.city.belongs_to.geolocation.coordinates).to.be.an("Array");
+              expect(res.body.city.belongs_to.geolocation.coordinates.length).to.equal(2);
+              expect(res.body.city.belongs_to.geolocation.coordinates[0]).to.equal("0.1278");
+              expect(res.body.city.belongs_to.geolocation.coordinates[1]).to.equal("51.5074");
+            });
+        });
         it("City3-GET responds 200 and all landmarks for given city", () => {
           const cityId = cityDocs[0]._id;
           return request
@@ -174,24 +164,19 @@ describe("", () => {
               expect(res.body).to.contain.keys("landmarks");
               expect(res.body.landmarks).to.be.an("Array");
               expect(res.body.landmarks.length).to.equal(2);
-              expect(res.body.landmarks[0]).to.contain.keys("geolocation", "picture_url", "info", "belongs_to", "landmark")
+              expect(res.body.landmarks[0]).to.contain.keys("geolocation", "picture_url", "info", "belongs_to", "landmark");
               expect(res.body.landmarks[0].landmark).to.equal("Manchester Piccadilly Station");
               expect(res.body.landmarks[0].geolocation).to.be.an("Object");
-              expect(res.body.landmarks[0].geolocation.geolocation.length).to.equal(2);
-              expect(res.body.landmarks[0].geolocation.geolocation[0]).to.equal("-2.2309113");
-              expect(res.body.landmarks[0].geolocation.geolocation[1]).to.equal("53.4774049");
+              expect(res.body.landmarks[0].geolocation.geolocation.coordinates.length).to.equal(2);
+              expect(res.body.landmarks[0].geolocation.geolocation.coordinates[0]).to.equal("-2.2309113");
+              expect(res.body.landmarks[0].geolocation.geolocation.coordinates[1]).to.equal("53.4774049");
               expect(res.body.landmarks[0].belongs_to).to.be.an("Object");
-              expect(res.body.landmarks[0].belongs_to).to.contain.keys(
-                "city",
-                "geolocation",
-                "picture_url",
-                "belongs_to"
-              );
-          })
+              expect(res.body.landmarks[0].belongs_to).to.contain.keys("city", "geolocation", "picture_url", "belongs_to");
+            });
         });
     })
       describe("landmarks", () => {
-        it("Landmark1-GET responds 200 and all landmarks", () => {
+        it.only("Landmark1-GET responds 200 and all landmarks", () => {
           return request
             .get("/api/landmarks")
             .expect(200)
@@ -202,13 +187,13 @@ describe("", () => {
               expect(res.body.landmarks[0]).to.contain.keys("geolocation", "picture_url", "info", "belongs_to", "landmark");
               expect(res.body.landmarks[2].landmark).to.equal("Lymefield Centre");
               expect(res.body.landmarks[2].geolocation).to.be.an("Object");
-              expect(res.body.landmarks[2].geolocation.geolocation.length).to.equal(2);
-              expect(res.body.landmarks[2].geolocation.geolocation[0]).to.equal("-2.0215345");
-              expect(res.body.landmarks[2].geolocation.geolocation[1]).to.equal("53.4405305");
+              expect(res.body.landmarks[2].geolocation.geolocation.coordinates.length).to.equal(2);
+              expect(res.body.landmarks[2].geolocation.geolocation.coordinates[0]).to.equal("-2.0215345");
+              expect(res.body.landmarks[2].geolocation.geolocation.coordinates[1]).to.equal("53.4405305");
               expect(res.body.landmarks[2].belongs_to).to.be.an("Object");
               expect(res.body.landmarks[2].belongs_to).to.contain.keys("city", "geolocation", "picture_url", "belongs_to");
             });
-        })
+        });
   });
 });
 });
