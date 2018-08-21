@@ -33,21 +33,21 @@ const getLandmarksByCity = (req, res, next) => {
 
     if (city_id.length !== 12 && city_id.length !== 24) {
         next({ status: 400, message: 'Bad Request' });
+    } else {
+        Landmark.find({ belongs_to: { _id: city_id } })
+            .populate('belongs_to')
+            .lean()
+            .then((landmarks) => {
+                if (landmarks === null) {
+                    next({ status: 400, message: 'Bad Request' });
+                } else if (landmarks.length === 0) {
+                    next({ status: 404, message: 'That city does not exist.' });
+                } else {
+                    res.status(200).send({ landmarks });
+                }
+            })
+            .catch(next);
     }
-
-    Landmark.find({ belongs_to: { _id: city_id } })
-        .populate('belongs_to')
-        .lean()
-        .then((landmarks) => {
-            if (landmarks === null) {
-                next({ status: 400, message: 'Bad Request' });
-            } else if (landmarks.length === 0) {
-                next({ status: 404, message: 'That city does not exist.' });
-            } else {
-                res.status(200).send({ landmarks });
-            }
-        })
-        .catch(next);
 };
 
 module.exports = { getAllLandmarks, getLandmarksByCity, getLandmarksByID };
