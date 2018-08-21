@@ -15,7 +15,11 @@ const getCityByID = (req, res, next) => {
         .populate('belongs_to')
         .lean()
         .then((city) => {
-            res.status(200).send({ city });
+            if (city === null) {
+                next({ status: 400, message: 'Bad Request' });
+            } else {
+                res.status(200).send({ city });
+            }
         })
         .catch(next);
 };
