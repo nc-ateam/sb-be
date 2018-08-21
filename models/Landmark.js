@@ -10,6 +10,10 @@ const LandmarkSchema = new Schema({
         type: Object,
         required: true
     },
+    georadius: {
+        type: Number,
+        required: true
+    },
     picture_url: {
         type: String,
         required: true
