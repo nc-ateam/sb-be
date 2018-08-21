@@ -19,7 +19,7 @@ const getLandmarksByID = (req, res, next) => {
         .populate('belongs_to')
         .lean()
         .then((landmark) => {
-            if (country === null) {
+            if (landmark === null) {
                 next({ status: 400, message: 'Bad Request' });
             } else {
                 res.status(200).send({ landmark });
