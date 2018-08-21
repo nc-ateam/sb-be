@@ -1,30 +1,20 @@
-process.env.NODE_ENV = 'test';
-const app = require('../app');
-const request = require('supertest')(app);
-const { expect } = require('chai');
-const mongoose = require('mongoose');
-const seedDB = require('../seed/seed.js');
-const testData = require('../seed/testData');
+process.env.NODE_ENV = "test";
+const app = require("../app");
+const request = require("supertest")(app);
+const { expect } = require("chai");
+const mongoose = require("mongoose");
+const seedDB = require("../seed/seed.js");
+const testData = require("../seed/testData");
 
-describe('', () => {
-    let cityDocs;
-    let countryDocs;
-    let landmarksDocs;
-    let photosDocs;
-    let usersDocs;
-    beforeEach(() => {
-        return seedDB(testData).then((docs) => {
-            [
-                cityDocs,
-                countryDocs,
-                landmarksDocs,
-                photosDocs,
-                usersDocs
-            ] = docs;
-        });
-    });
-    after(() => {
-        return mongoose.disconnect();
+describe("", () => {
+  let cityDocs;
+  let countryDocs;
+  let landmarksDocs;
+  let photosDocs;
+  let usersDocs;
+  beforeEach(() => {
+    return seedDB(testData).then(docs => {
+      [cityDocs, countryDocs, landmarksDocs, photosDocs, usersDocs] = docs;
     });
   });
   after(() => {
@@ -222,12 +212,12 @@ describe('', () => {
               expect(
                 res.body.landmarks[0].geolocation.coordinates.length
               ).to.equal(2);
-              expect(
-                res.body.landmarks[0].geolocation.coordinates[0]
-              ).to.equal(-2.2309113);
-              expect(
-                res.body.landmarks[0].geolocation.coordinates[1]
-              ).to.equal(53.4774049);
+              expect(res.body.landmarks[0].geolocation.coordinates[0]).to.equal(
+                -2.2309113
+              );
+              expect(res.body.landmarks[0].geolocation.coordinates[1]).to.equal(
+                53.4774049
+              );
               expect(res.body.landmarks[0].belongs_to).to.be.an("Object");
               expect(res.body.landmarks[0].belongs_to).to.contain.keys(
                 "city",
@@ -267,12 +257,12 @@ describe('', () => {
               expect(
                 res.body.landmarks[2].geolocation.coordinates.length
               ).to.equal(2);
-              expect(
-                res.body.landmarks[2].geolocation.coordinates[0]
-              ).to.equal(-2.0215345);
-              expect(
-                res.body.landmarks[2].geolocation.coordinates[1]
-              ).to.equal(53.4405305);
+              expect(res.body.landmarks[2].geolocation.coordinates[0]).to.equal(
+                -2.0215345
+              );
+              expect(res.body.landmarks[2].geolocation.coordinates[1]).to.equal(
+                53.4405305
+              );
               expect(res.body.landmarks[2].belongs_to).to.be.an("Object");
               expect(res.body.landmarks[2].belongs_to).to.contain.keys(
                 "city",
