@@ -19,7 +19,11 @@ const getLandmarksByID = (req, res, next) => {
         .populate('belongs_to')
         .lean()
         .then((landmark) => {
-            res.status(200).send({ landmark });
+            if (country === null) {
+                next({ status: 400, message: 'Bad Request' });
+            } else {
+                res.status(200).send({ landmark });
+            }
         })
         .catch(next);
 };
@@ -27,11 +31,11 @@ const getLandmarksByID = (req, res, next) => {
 const getLandmarksByCity = (req, res, next) => {
     const { city_id } = req.params;
 
-    if (city_id.length !== 12 || city_id.length !== 24) {
+    if (city_id.length !== 12 && city_id.length !== 24) {
         next({ status: 400, message: 'Bad Request' });
     }
 
-    Landmark.find({ belongs_to: { _id: req.params.city_id } })
+    Landmark.find({ belongs_to: { _id: city_id } })
         .populate('belongs_to')
         .lean()
         .then((landmarks) => {
