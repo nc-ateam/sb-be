@@ -13,7 +13,11 @@ const getCountryByID = (req, res, next) => {
     Country.findById(req.params.country_id)
         .lean()
         .then((country) => {
-            res.status(200).send({ country });
+            if (country === null) {
+                next({ status: 400, message: 'Bad Request' });
+            } else {
+                res.status(200).send({ country });
+            }
         })
         .catch(next);
 };
