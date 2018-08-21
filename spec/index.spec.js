@@ -1,20 +1,30 @@
-process.env.NODE_ENV = "test";
-const app = require("../app");
-const request = require("supertest")(app);
-const { expect } = require("chai");
-const mongoose = require("mongoose");
-const seedDB = require("../seed/seed.js");
-const testData = require("../seed/testData");
+process.env.NODE_ENV = 'test';
+const app = require('../app');
+const request = require('supertest')(app);
+const { expect } = require('chai');
+const mongoose = require('mongoose');
+const seedDB = require('../seed/seed.js');
+const testData = require('../seed/testData');
 
-describe("", () => {
-  let cityDocs;
-  let countryDocs;
-  let landmarksDocs;
-  let photosDocs;
-  let usersDocs;
-  beforeEach(() => {
-    return seedDB(testData).then(docs => {
-      [cityDocs, countryDocs, landmarksDocs, photosDocs, usersDocs] = docs;
+describe('', () => {
+    let cityDocs;
+    let countryDocs;
+    let landmarksDocs;
+    let photosDocs;
+    let usersDocs;
+    beforeEach(() => {
+        return seedDB(testData).then((docs) => {
+            [
+                cityDocs,
+                countryDocs,
+                landmarksDocs,
+                photosDocs,
+                usersDocs
+            ] = docs;
+        });
+    });
+    after(() => {
+        return mongoose.disconnect();
     });
   });
   after(() => {

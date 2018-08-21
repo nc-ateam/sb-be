@@ -13,7 +13,11 @@ const getUserByID = (req, res, next) => {
     User.findById(req.params.user_id)
         .lean()
         .then((user) => {
-            res.status(200).send({ user });
+            if (user === null) {
+                next({ status: 400, message: 'Bad Request' });
+            } else {
+                res.status(200).send({ user });
+            }
         })
         .catch(next);
 };
