@@ -5,17 +5,33 @@ const getAllLandmarks = (req, res, next) => {
         .populate('belongs_to')
         .lean()
         .then((landmarks) => {
-            res.status(200).send({ landmarks });
+            if (landmarks === null) {
+                next({ status: 400, message: 'Bad Request' });
+            } else {
+                res.status(200).send({ landmarks });
+            }
         })
         .catch(next);
 };
 
 const getLandmarksByCity = (req, res, next) => {
+    const { city_id } = req.params;
+
+    if (city_id.length !== 12 || city_id.length !== 24) {
+        next({ status: 400, message: 'Bad Request' });
+    }
+
     Landmark.find({ belongs_to: { _id: req.params.city_id } })
         .populate('belongs_to')
         .lean()
         .then((landmarks) => {
-            res.status(200).send({ landmarks });
+            if (landmarks === null) {
+                next({ status: 400, message: 'Bad Request' });
+            } else if (landmarks.length === 0) {
+                next({ status: 404, message: 'That city does not exist.' });
+            } else {
+                res.status(200).send({ landmarks });
+            }
         })
         .catch(next);
 };
