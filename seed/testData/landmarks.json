@@ -2,9 +2,10 @@
   {
     "landmark": "Manchester Piccadilly Station",
     "geolocation": {
-      "geolocation": ["-2.2309113", "53.4774049"],
-      "georadius": "10"
+      "type": "Point",
+      "coordinates": [-2.2309113, 53.4774049]
     },
+    "georadius": 0.0019911,
     "picture_url": "www.pictureurl.com",
     "info": "www.wikipedia.com",
     "belongs_to": "Manchester"
@@ -12,9 +13,10 @@
   {
     "landmark": "Northcoders",
     "geolocation": {
-      "geolocation": ["-2.2349801", "53.4816456"],
-      "georadius": "10"
+      "type": "Point",
+      "coordinates": [-2.2349801, 53.4816456]
     },
+    "georadius": 0.0019911,
     "picture_url": "https://cdn-images-1.medium.com/max/1200/1*LdnSztHVYhhd8K8EqlgCJQ.png",
     "info": "www.northcoders.com",
     "belongs_to": "Manchester"
@@ -22,9 +24,10 @@
   {
     "landmark": "Lymefield Centre",
     "geolocation": {
-      "geolocation": ["-2.0215345", "53.4405305"],
-      "georadius": "10"
+      "type": "Point",
+      "coordinates": [-2.0215345, 53.4405305]
     },
+    "georadius": 0.0019911,
     "picture_url": "https://lh5.googleusercontent.com/p/AF1QipPctOsdRwCQUbPIO4-snLMN4gJBhywpk3tWod_q=w408-h306-k-no",
     "info": "www.lymefield.com",
     "belongs_to": "Broadbottom"

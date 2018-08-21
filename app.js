@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const bodyParser = require("body-parser");
 const path = require('path');
 const { DB_URL } = require('./db/config');
 const cors = require('cors');
@@ -8,6 +9,7 @@ const { rootRouter } = require('./routes/rootRouter');
 const { apiRouter } = require('./routes/apiRouter');
 
 app.use(cors());
+app.use(bodyParser.json(), express.static(__dirname + "/public"));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // useNewUrlParser is set to true as old is being phased out.

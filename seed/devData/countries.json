@@ -1,7 +1,13 @@
 [
   {
     "country": "United Kingdom",
-    "geolocation": [ "0.1278", "51.5074"],
+    "geolocation": {
+      "type": "Point",
+      "coordinates": [
+        "0.1278",
+        "51.5074"
+      ]
+    },
     "picture_url": "www.pictureurl.com"
   }
 ]
