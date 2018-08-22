@@ -41,10 +41,9 @@ describe("", () => {
           .get("/api/contries")
           .expect(404)
           .then(res => {
-            expect(res.body).to.be.an("Object")
-            expect(res.body).to.contain.keys("message")
-            expect(res.body.message).to.equal("Page not found")
-
+            expect(res.body).to.be.an("Object");
+            expect(res.body).to.contain.keys("message");
+            expect(res.body.message).to.equal("Page not found");
           });
       });
       it("Country2-GET responds 200 and specific country of given country- united kingdom", () => {
@@ -89,7 +88,9 @@ describe("", () => {
           .then(res => {
             expect(res.body).to.be.an("Object");
             expect(res.body).to.contain.keys("message");
-            expect(res.body.message).to.equal("Bad Request: france is an invalid ID");
+            expect(res.body.message).to.equal(
+              "Bad Request: france is an invalid ID"
+            );
           });
       });
       it("Country2C-GET responds 404 and appropriate message", () => {
@@ -215,6 +216,16 @@ describe("", () => {
               expect(res.body.cities.length).to.equal(2);
             });
         });
+        it("City1A-GET responds 404 and appropriate message", () => {
+          return request
+            .get("/api/citis")
+            .expect(404)
+            .then(res => {
+              expect(res.body).to.be.an("Object");
+              expect(res.body).to.contain.keys("message");
+              expect(res.body.message).to.equal("Page not found");
+            });
+        });
         it("City2-GET responds 200 and specific city of given city- Manchester", () => {
           const cityId = cityDocs[0]._id;
           return request
@@ -251,6 +262,40 @@ describe("", () => {
               expect(
                 res.body.city.belongs_to.geolocation.coordinates[1]
               ).to.equal("51.5074");
+            });
+        });
+        it("City2A-GET responds 400 and appropriate message", () => {
+          const countryId = countryDocs[0]._id;
+          return request
+            .get(`/api/cities/${countryId}`)
+            .expect(400)
+            .then(res => {
+              expect(res.body).to.be.an("Object");
+              expect(res.body).to.contain.keys("message");
+              expect(res.body.message).to.equal("Bad Request");
+            });
+        });
+        it("City2B-GET responds 400 and appropriate message", () => {
+          return request
+            .get(`/api/cities/manchester`)
+            .expect(400)
+            .then(res => {
+              expect(res.body).to.be.an("Object");
+              expect(res.body).to.contain.keys("message");
+              expect(res.body.message).to.equal(
+                "Bad Request: manchester is an invalid ID"
+              );
+            });
+        });
+        it("City2C-GET responds 404 and appropriate message", () => {
+          const cityId = cityDocs[0]._id;
+          return request
+            .get(`/api/citis/${cityId}`)
+            .expect(404)
+            .then(res => {
+              expect(res.body).to.be.an("Object");
+              expect(res.body).to.contain.keys("message");
+              expect(res.body.message).to.equal("Page not found");
             });
         });
         it("City3-GET responds 200 and all landmarks for given city", () => {
@@ -290,6 +335,28 @@ describe("", () => {
                 "picture_url",
                 "belongs_to"
               );
+            });
+        });
+        it("City3A-GET responds 404 and appropriate message", () => {
+          const cityId = cityDocs[0]._id;
+          return request
+            .get(`/api/cities/${cityId}/Northcoders`)
+            .expect(404)
+            .then(res => {
+              expect(res.body).to.be.an("Object");
+              expect(res.body).to.contain.keys("message");
+              expect(res.body.message).to.equal("Page not found");
+            });
+        });
+        it("City3B-GET responds 404 and appropriate message", () => {
+          const countryId = countryDocs[0]._id;
+          return request
+            .get(`/api/cities/${countryId}/landmarks`)
+            .expect(404)
+            .then(res => {
+              expect(res.body).to.be.an("Object");
+              expect(res.body).to.contain.keys("message");
+              expect(res.body.message).to.equal("That city does not exist.");
             });
         });
       });
@@ -372,11 +439,14 @@ describe("", () => {
             .send({ body })
             .expect(201)
             .then(res => {
-              expect(res.body).to.contain.keys("newUser")
-              expect(res.body.newUser).to.contain.keys("username", "picture_url",
+              expect(res.body).to.contain.keys("newUser");
+              expect(res.body.newUser).to.contain.keys(
+                "username",
+                "picture_url",
                 "fullname",
                 "email",
-                "visitedLandmarks");
+                "visitedLandmarks"
+              );
             });
         });
       });
