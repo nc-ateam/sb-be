@@ -3,18 +3,21 @@
     "username": "demoUser123",
     "picture_url": null,
     "fullname": "John Smith",
-    "email": "test123@hotmail.com"
+    "email": "test123@hotmail.com",
+    "visitedLandmarks": []
   },
   {
     "username": "demoUserABC",
     "picture_url": "https: //vignette.wikia.nocookie.net/disney/images/5/57/Jane_Porter_%28Vector%29.png/revision/latest?cb=20160803151057",
     "fullname": "Jane Doe",
-    "email": "janeyD123@hotmail.com"
+    "email": "janeyD123@hotmail.com",
+    "visitedLandmarks": []
   },
   {
     "username": "cwrighty92",
     "picture_url": "https://www.irishgathering.ie/images/coa/2011/wright_large.gif",
     "fullname": "Chris Wright",
-    "email": "cwright3@hotmail.com"
+    "email": "cwright3@hotmail.com",
+    "visitedLandmarks": []
   }
 ]
