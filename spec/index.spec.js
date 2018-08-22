@@ -404,6 +404,16 @@ describe("", () => {
               );
             });
         });
+        it("Landmarks1A-GET responds 404 and appropriate message", () => {
+          return request
+            .get("/api/landmark")
+            .expect(404)
+            .then(res => {
+              expect(res.body).to.be.an("Object");
+              expect(res.body).to.contain.keys("message");
+              expect(res.body.message).to.equal("Page not found");
+            });
+        });
         it("Landmark2- POST request, to see how geolocation works with mongo", () => {
           const landmarkId = landmarksDocs[0]._id;
           const body =
@@ -422,6 +432,52 @@ describe("", () => {
                 "firebase_url"
               );
               expect(res.body.storedPhoto.firebase_url).to.equal(body);
+            });
+        });
+        it("Landmark2A- POST request,responds 400 with a url we arent able to work with", () => {
+          const landmarkId = landmarksDocs[0]._id;
+          const body =
+            "https://firebasestorage.googleapis.com/v0/b/my-project-1531828203931.appspot.com/o/cwright2F~-2.232817%2C53.4779652~cwrighpeg?alt=media&token=19672e68-2ec7-43ea-a8f7-0c3cfeb26b7c";
+          return request
+            .post(`/api/landmarks/${landmarkId}/checkLandmark`)
+            .send({ body })
+            .expect(400)
+            .then(res => {
+              expect(res.body).to.be.an("Object");
+              expect(res.body).to.contain.keys("message");
+              expect(res.body.message).to.equal(
+                "Bad Request: TypeError: Cannot read property '_id' of undefined"
+              );
+            });
+        });
+        it("Landmark2B- POST request,responds 400 with a cityId instead of landmark", () => {
+          const cityId = cityDocs[0]._id;
+          const body =
+            "https://firebasestorage.googleapis.com/v0/b/my-project-1531828203931.appspot.com/o/cwright2F~-2.232817%2C53.4779652~cwrighpeg?alt=media&token=19672e68-2ec7-43ea-a8f7-0c3cfeb26b7c";
+          return request
+            .post(`/api/landmarks/${cityId}/checkLandmark`)
+            .send({ body })
+            .expect(400)
+            .then(res => {
+              expect(res.body).to.be.an("Object");
+              expect(res.body).to.contain.keys("message");
+              expect(res.body.message).to.equal(
+                "Bad Request: TypeError: Cannot read property 'georadius' of undefined"
+              );
+            });
+        });
+        it("Landmark2C- POST request,responds 404 with a untrailed path", () => {
+          const landmarkId = landmarksDocs[0]._id;
+          const body =
+            "https://firebasestorage.googleapis.com/v0/b/my-project-1531828203931.appspot.com/o/cwright2F~-2.232817%2C53.4779652~cwrighpeg?alt=media&token=19672e68-2ec7-43ea-a8f7-0c3cfeb26b7c";
+          return request
+            .post(`/api/landmarks/${landmarkId}/checkLadmark`)
+            .send({ body })
+            .expect(404)
+            .then(res => {
+              expect(res.body).to.be.an("Object");
+              expect(res.body).to.contain.keys("message");
+              expect(res.body.message).to.equal("Page not found");
             });
         });
       });
@@ -447,6 +503,41 @@ describe("", () => {
                 "email",
                 "visitedLandmarks"
               );
+            });
+        });
+        it("User1A-POST responds 404 with faulty path", () => {
+          let body = {
+            username: "stamp-book-tester",
+            picture_url: null,
+            fullname: "Stamp Book",
+            email: "stampt@hotmail.com",
+            visitedLandmarks: []
+          };
+          return request
+            .post(`/api/usrs`)
+            .send({ body })
+            .expect(404)
+            .then(res => {
+              expect(res.body).to.be.an("Object");
+              expect(res.body).to.contain.keys("message");
+              expect(res.body.message).to.equal("Page not found");
+            });
+        });
+        it("User1B-POST responds 400 with faulty path", () => {
+          let body = {
+            picture_url: null,
+            fullname: "Stamp Book",
+            email: "stampt@hotmail.com",
+            visitedLandmarks: []
+          };
+          return request
+            .post(`/api/users`)
+            .send({ body })
+            .expect(400)
+            .then(res => {
+              expect(res.body).to.be.an("Object");
+              expect(res.body).to.contain.keys("message");
+              expect(res.body.message).to.equal("Bad Request: a required field is missing!");
             });
         });
       });
