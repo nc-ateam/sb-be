@@ -16,6 +16,13 @@ const UserSchema = new Schema({
     email: {
         type: String,
         required: true
+    },
+    visitedLandmarks: {
+        type: Array,
+        items: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'landmarks'},
+        required: true
     }
 });
 

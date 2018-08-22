@@ -272,7 +272,7 @@ describe("", () => {
               );
             });
         });
-        it("Landmark2- POST request, to see how geolocation works with mongo", () => {
+        it.only("Landmark2- POST request, to see how geolocation works with mongo", () => {
           const landmarkId = landmarksDocs[0]._id;
           const body =
             "https://firebasestorage.googleapis.com/v0/b/my-project-1531828203931.appspot.com/o/cwrighty92%2F~-2.232817%2C53.4779652~cwrighty92jpeg?alt=media&token=19672e68-2ec7-43ea-a8f7-0c3cfeb26b7c";

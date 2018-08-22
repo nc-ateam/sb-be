@@ -67,7 +67,8 @@ const checkAgainstLandmark = (req, res, next) => {
       location.forEach(item => {
         if (`${item._id}` === req.params.landmarkId) {
           let postPhoto = {};
-          User.find({username: userName}).then(user => {
+          User.update({username: userName},{"$push": {"visitedLandmarks":item._id}}).then(user => {
+              User.find({ username: userName }).then(user => {
             postPhoto.belongs_to_user = user[0]._id;
             postPhoto.belongs_to_city = item.belongs_to;
             postPhoto.belongs_to_landmark = item._id;
@@ -79,6 +80,7 @@ const checkAgainstLandmark = (req, res, next) => {
               })
             });
           })
+        })
         }
       });
     });
