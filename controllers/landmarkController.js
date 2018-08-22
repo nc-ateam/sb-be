@@ -84,7 +84,8 @@ const checkAgainstLandmark = (req, res, next) => {
         }
       });
     });
-  });
+  })
+  .catch(next);
 };
 
 module.exports = { getAllLandmarks, getLandmarksByCity, getLandmarksByID, checkAgainstLandmark };
