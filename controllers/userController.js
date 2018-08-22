@@ -22,4 +22,15 @@ const getUserByID = (req, res, next) => {
         .catch(next);
 };
 
-module.exports = { getAllUsers, getUserByID };
+const postNewUser = (req, res, next) =>{
+    let newBody = new User(req.body.body)
+    newBody
+    .save()
+    .then(newUser =>{
+        res.status(201).send({
+            newUser
+        })
+    })
+}
+
+module.exports = { getAllUsers, getUserByID, postNewUser };
