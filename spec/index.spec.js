@@ -36,6 +36,17 @@ describe("", () => {
             expect(res.body.countries.length).to.equal(2);
           });
       });
+      it("Country1A-GET responds 404 and appropriate message", () => {
+        return request
+          .get("/api/contries")
+          .expect(404)
+          .then(res => {
+            expect(res.body).to.be.an("Object")
+            expect(res.body).to.contain.keys("message")
+            expect(res.body.message).to.equal("Page not found")
+
+          });
+      });
       it("Country2-GET responds 200 and specific country of given country- united kingdom", () => {
         const countryId = countryDocs[0]._id;
         return request
@@ -58,6 +69,38 @@ describe("", () => {
             expect(res.body.country.geolocation.coordinates[1]).to.equal(
               "51.5074"
             );
+          });
+      });
+      it("Country2A-GET responds 400 and appropriate message", () => {
+        const cityId = cityDocs[0]._id;
+        return request
+          .get(`/api/countries/${cityId}`)
+          .expect(400)
+          .then(res => {
+            expect(res.body).to.be.an("Object");
+            expect(res.body).to.contain.keys("message");
+            expect(res.body.message).to.equal("Bad Request");
+          });
+      });
+      it("Country2B-GET responds 400 and appropriate message", () => {
+        return request
+          .get(`/api/countries/france`)
+          .expect(400)
+          .then(res => {
+            expect(res.body).to.be.an("Object");
+            expect(res.body).to.contain.keys("message");
+            expect(res.body.message).to.equal("Bad Request: france is an invalid ID");
+          });
+      });
+      it("Country2C-GET responds 404 and appropriate message", () => {
+        const countryId = countryDocs[0]._id;
+        return request
+          .get(`/api/countres/${countryId}`)
+          .expect(404)
+          .then(res => {
+            expect(res.body).to.be.an("Object");
+            expect(res.body).to.contain.keys("message");
+            expect(res.body.message).to.equal("Page not found");
           });
       });
       it("Country3-GET responds 200 and specific country of given country- france", () => {
@@ -132,6 +175,28 @@ describe("", () => {
             expect(
               res.body.cities[0].belongs_to.geolocation.coordinates[1]
             ).to.equal("51.5074");
+          });
+      });
+      it("Country4A-GET responds 404 and appropriate message", () => {
+        const cityId = cityDocs[0]._id;
+        return request
+          .get(`/api/countries/${cityId}/cities`)
+          .expect(404)
+          .then(res => {
+            expect(res.body).to.be.an("Object");
+            expect(res.body).to.contain.keys("message");
+            expect(res.body.message).to.equal("That country does not exist.");
+          });
+      });
+      it("Country4B-GET responds 404 and appropriate message", () => {
+        const countryId = countryDocs[0]._id;
+        return request
+          .get(`/api/countries/${countryId}/manchester`)
+          .expect(404)
+          .then(res => {
+            expect(res.body).to.be.an("Object");
+            expect(res.body).to.contain.keys("message");
+            expect(res.body.message).to.equal("Page not found");
           });
       });
       describe("cities", () => {
