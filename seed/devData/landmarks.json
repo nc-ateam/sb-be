@@ -7,7 +7,7 @@
     },
     "georadius": 0.0019911,
     "picture_url": "https://i.imgur.com/4SvFAVI.jpg",
-    "info": "www.wikipedia.com",
+    "info": "https://en.wikipedia.org/wiki/Manchester_Piccadilly_station",
     "belongs_to": "Manchester"
   },
   {
@@ -37,7 +37,7 @@
     "geolocation": { "type": "Point", "coordinates": [-2.200427, 53.483087] },
     "georadius": 0.0025,
     "picture_url": "https://i.imgur.com/u7K3Wjm.jpg",
-    "info": "www.mancity.com",
+    "info": "https://en.wikipedia.org/wiki/City_of_Manchester_Stadium",
     "belongs_to": "Manchester"
   },
   {
@@ -45,7 +45,7 @@
     "geolocation": { "type": "Point", "coordinates": [-2.242457, 53.485677] },
     "georadius": 0.0019911,
     "picture_url": "https://i.imgur.com/hdu1Wjr.jpg",
-    "info": "www.nationalfootballmuseum.com",
+    "info": "https://en.wikipedia.org/wiki/National_Football_Museum",
     "belongs_to": "Manchester"
   },
   {
@@ -53,7 +53,7 @@
     "geolocation": { "type": "Point", "coordinates": [-2.254445, 53.476933] },
     "georadius": 0.0019911,
     "picture_url": "https://i.imgur.com/ZVjHdSk.jpg",
-    "info": "www.msimanchester.org.uk",
+    "info": "https://en.wikipedia.org/wiki/Museum_of_Science_and_Industry_(Manchester)",
     "belongs_to": "Manchester"
   },
   {
@@ -61,7 +61,7 @@
     "geolocation": { "type": "Point", "coordinates": [-2.241765, 53.478829] },
     "georadius": 0.0019911,
     "picture_url": "https://i.imgur.com/LQ4fful.jpg",
-    "info": "www.manchesterartgallery.org",
+    "info": "https://en.wikipedia.org/wiki/Manchester_Art_Gallery",
     "belongs_to": "Manchester"
   },
   {
@@ -69,7 +69,7 @@
     "geolocation": { "type": "Point", "coordinates": [-2.244275, 53.477891] },
     "georadius": 0.0019911,
     "picture_url": "https://i.imgur.com/qLaXrSP.jpg",
-    "info": "www.manchester.gov.uk/centrallibrary",
+    "info": "https://en.wikipedia.org/wiki/Manchester_Central_Library",
     "belongs_to": "Manchester"
   },
   {
@@ -77,7 +77,7 @@
     "geolocation": { "type": "Point", "coordinates": [-2.236797, 53.480893] },
     "georadius": 0.0019911,
     "picture_url": "https://i.imgur.com/dQDwwGG.jpg",
-    "info": "www.en.wikipedia.org/wiki/Piccadilly_Gardens",
+    "info": "https://en.wikipedia.org/wiki/Piccadilly_Gardens",
     "belongs_to": "Manchester"
   },
   {
@@ -85,7 +85,7 @@
     "geolocation": { "type": "Point", "coordinates": [-2.248749, 53.480237] },
     "georadius": 0.0019911,
     "picture_url": "https://i.imgur.com/lZ8oysT.jpg",
-    "info": "http://www.library.manchester.ac.uk/rylands/",
+    "info": "https://en.wikipedia.org/wiki/John_Rylands_Library",
     "belongs_to": "Manchester"
   }
 ]
