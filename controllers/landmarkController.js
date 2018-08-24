@@ -64,6 +64,9 @@ const checkAgainstLandmark = (req, res, next) => {
     Landmark.find({
       geolocation: { $geoWithin: { $center: [numberRes, radius] } }
     }).then(location => {
+        if(location.length === 0)    {
+            res.status(400).send({message: `Sorry, that photo is not in the vicinty of ${marker.landmark}`})
+        }    
       location.forEach(item => {
         if (`${item._id}` === req.params.landmarkId) {
           let postPhoto = {};
