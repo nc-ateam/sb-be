@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
 const path = require('path');
-const { DB_URL } = require('./db/config');
+const DB_URL = process.env.DB_URL || require("./db/config").DB_URL;
 const cors = require('cors');
 const { rootRouter } = require('./routes/rootRouter');
 const { apiRouter } = require('./routes/apiRouter');
@@ -27,7 +27,7 @@ app.use('/', rootRouter);
 app.use('/api', apiRouter);
 
 app.use('/*', (req, res) => {
-    res.status(404).send('Page not found');
+    res.status(404).send({message: 'Page not found'});
 });
 
 app.use((err, req, res, next) => {

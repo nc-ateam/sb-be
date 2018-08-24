@@ -1,13 +1,17 @@
 [
   {
     "city": "Manchester",
-    "geolocation": [-2.242631, 53.480759],
+    "geolocation": {
+      "type": "Point",
+      "coordinates":[-2.2426, 53.4808]},
     "picture_url": "https://i.imgur.com/gs7tpIT.jpg",
     "belongs_to": "United Kingdom"
   },
   {
     "city": "Broadbottom",
-    "geolocation": [-2.01655, 53.441219],
+    "geolocation": {
+      "type": "Point",
+      "coordinates":[-2.0215345, 53.4405305]},
     "picture_url": "https://i.imgur.com/ZAN5LNe.jpg",
     "belongs_to": "United Kingdom"
   }
