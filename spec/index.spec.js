@@ -36,6 +36,16 @@ describe("", () => {
             expect(res.body.countries.length).to.equal(2);
           });
       });
+      it("Country1A-GET responds 404 and appropriate message", () => {
+        return request
+          .get("/api/contries")
+          .expect(404)
+          .then(res => {
+            expect(res.body).to.be.an("Object");
+            expect(res.body).to.contain.keys("message");
+            expect(res.body.message).to.equal("Page not found");
+          });
+      });
       it("Country2-GET responds 200 and specific country of given country- united kingdom", () => {
         const countryId = countryDocs[0]._id;
         return request
@@ -58,6 +68,40 @@ describe("", () => {
             expect(res.body.country.geolocation.coordinates[1]).to.equal(
               "51.5074"
             );
+          });
+      });
+      it("Country2A-GET responds 400 and appropriate message", () => {
+        const cityId = cityDocs[0]._id;
+        return request
+          .get(`/api/countries/${cityId}`)
+          .expect(400)
+          .then(res => {
+            expect(res.body).to.be.an("Object");
+            expect(res.body).to.contain.keys("message");
+            expect(res.body.message).to.equal("Bad Request");
+          });
+      });
+      it("Country2B-GET responds 400 and appropriate message", () => {
+        return request
+          .get(`/api/countries/france`)
+          .expect(400)
+          .then(res => {
+            expect(res.body).to.be.an("Object");
+            expect(res.body).to.contain.keys("message");
+            expect(res.body.message).to.equal(
+              "Bad Request: france is an invalid ID"
+            );
+          });
+      });
+      it("Country2C-GET responds 404 and appropriate message", () => {
+        const countryId = countryDocs[0]._id;
+        return request
+          .get(`/api/countres/${countryId}`)
+          .expect(404)
+          .then(res => {
+            expect(res.body).to.be.an("Object");
+            expect(res.body).to.contain.keys("message");
+            expect(res.body.message).to.equal("Page not found");
           });
       });
       it("Country3-GET responds 200 and specific country of given country- france", () => {
@@ -134,6 +178,28 @@ describe("", () => {
             ).to.equal("51.5074");
           });
       });
+      it("Country4A-GET responds 404 and appropriate message", () => {
+        const cityId = cityDocs[0]._id;
+        return request
+          .get(`/api/countries/${cityId}/cities`)
+          .expect(404)
+          .then(res => {
+            expect(res.body).to.be.an("Object");
+            expect(res.body).to.contain.keys("message");
+            expect(res.body.message).to.equal("That country does not exist.");
+          });
+      });
+      it("Country4B-GET responds 404 and appropriate message", () => {
+        const countryId = countryDocs[0]._id;
+        return request
+          .get(`/api/countries/${countryId}/manchester`)
+          .expect(404)
+          .then(res => {
+            expect(res.body).to.be.an("Object");
+            expect(res.body).to.contain.keys("message");
+            expect(res.body.message).to.equal("Page not found");
+          });
+      });
       describe("cities", () => {
         it("City1-GET responds 200 and all cities", () => {
           return request
@@ -148,6 +214,16 @@ describe("", () => {
               );
               expect(res.body.cities).to.be.an("Array");
               expect(res.body.cities.length).to.equal(2);
+            });
+        });
+        it("City1A-GET responds 404 and appropriate message", () => {
+          return request
+            .get("/api/citis")
+            .expect(404)
+            .then(res => {
+              expect(res.body).to.be.an("Object");
+              expect(res.body).to.contain.keys("message");
+              expect(res.body.message).to.equal("Page not found");
             });
         });
         it("City2-GET responds 200 and specific city of given city- Manchester", () => {
@@ -188,6 +264,40 @@ describe("", () => {
               ).to.equal("51.5074");
             });
         });
+        it("City2A-GET responds 400 and appropriate message", () => {
+          const countryId = countryDocs[0]._id;
+          return request
+            .get(`/api/cities/${countryId}`)
+            .expect(400)
+            .then(res => {
+              expect(res.body).to.be.an("Object");
+              expect(res.body).to.contain.keys("message");
+              expect(res.body.message).to.equal("Bad Request");
+            });
+        });
+        it("City2B-GET responds 400 and appropriate message", () => {
+          return request
+            .get(`/api/cities/manchester`)
+            .expect(400)
+            .then(res => {
+              expect(res.body).to.be.an("Object");
+              expect(res.body).to.contain.keys("message");
+              expect(res.body.message).to.equal(
+                "Bad Request: manchester is an invalid ID"
+              );
+            });
+        });
+        it("City2C-GET responds 404 and appropriate message", () => {
+          const cityId = cityDocs[0]._id;
+          return request
+            .get(`/api/citis/${cityId}`)
+            .expect(404)
+            .then(res => {
+              expect(res.body).to.be.an("Object");
+              expect(res.body).to.contain.keys("message");
+              expect(res.body.message).to.equal("Page not found");
+            });
+        });
         it("City3-GET responds 200 and all landmarks for given city", () => {
           const cityId = cityDocs[0]._id;
           return request
@@ -225,6 +335,28 @@ describe("", () => {
                 "picture_url",
                 "belongs_to"
               );
+            });
+        });
+        it("City3A-GET responds 404 and appropriate message", () => {
+          const cityId = cityDocs[0]._id;
+          return request
+            .get(`/api/cities/${cityId}/Northcoders`)
+            .expect(404)
+            .then(res => {
+              expect(res.body).to.be.an("Object");
+              expect(res.body).to.contain.keys("message");
+              expect(res.body.message).to.equal("Page not found");
+            });
+        });
+        it("City3B-GET responds 404 and appropriate message", () => {
+          const countryId = countryDocs[0]._id;
+          return request
+            .get(`/api/cities/${countryId}/landmarks`)
+            .expect(404)
+            .then(res => {
+              expect(res.body).to.be.an("Object");
+              expect(res.body).to.contain.keys("message");
+              expect(res.body.message).to.equal("That city does not exist.");
             });
         });
       });
@@ -272,6 +404,16 @@ describe("", () => {
               );
             });
         });
+        it("Landmarks1A-GET responds 404 and appropriate message", () => {
+          return request
+            .get("/api/landmark")
+            .expect(404)
+            .then(res => {
+              expect(res.body).to.be.an("Object");
+              expect(res.body).to.contain.keys("message");
+              expect(res.body.message).to.equal("Page not found");
+            });
+        });
         it("Landmark2- POST request, to see how geolocation works with mongo", () => {
           const landmarkId = landmarksDocs[0]._id;
           const body =
@@ -292,6 +434,52 @@ describe("", () => {
               expect(res.body.storedPhoto.firebase_url).to.equal(body);
             });
         });
+        it("Landmark2A- POST request,responds 400 with a url we arent able to work with", () => {
+          const landmarkId = landmarksDocs[0]._id;
+          const body =
+            "https://firebasestorage.googleapis.com/v0/b/my-project-1531828203931.appspot.com/o/cwright2F~-2.232817%2C53.4779652~cwrighpeg?alt=media&token=19672e68-2ec7-43ea-a8f7-0c3cfeb26b7c";
+          return request
+            .post(`/api/landmarks/${landmarkId}/checkLandmark`)
+            .send({ body })
+            .expect(400)
+            .then(res => {
+              expect(res.body).to.be.an("Object");
+              expect(res.body).to.contain.keys("message");
+              expect(res.body.message).to.equal(
+                "Bad Request: TypeError: Cannot read property '_id' of undefined"
+              );
+            });
+        });
+        it("Landmark2B- POST request,responds 400 with a cityId instead of landmark", () => {
+          const cityId = cityDocs[0]._id;
+          const body =
+            "https://firebasestorage.googleapis.com/v0/b/my-project-1531828203931.appspot.com/o/cwright2F~-2.232817%2C53.4779652~cwrighpeg?alt=media&token=19672e68-2ec7-43ea-a8f7-0c3cfeb26b7c";
+          return request
+            .post(`/api/landmarks/${cityId}/checkLandmark`)
+            .send({ body })
+            .expect(400)
+            .then(res => {
+              expect(res.body).to.be.an("Object");
+              expect(res.body).to.contain.keys("message");
+              expect(res.body.message).to.equal(
+                "Bad Request: TypeError: Cannot read property 'georadius' of undefined"
+              );
+            });
+        });
+        it("Landmark2C- POST request,responds 404 with a untrailed path", () => {
+          const landmarkId = landmarksDocs[0]._id;
+          const body =
+            "https://firebasestorage.googleapis.com/v0/b/my-project-1531828203931.appspot.com/o/cwright2F~-2.232817%2C53.4779652~cwrighpeg?alt=media&token=19672e68-2ec7-43ea-a8f7-0c3cfeb26b7c";
+          return request
+            .post(`/api/landmarks/${landmarkId}/checkLadmark`)
+            .send({ body })
+            .expect(404)
+            .then(res => {
+              expect(res.body).to.be.an("Object");
+              expect(res.body).to.contain.keys("message");
+              expect(res.body.message).to.equal("Page not found");
+            });
+        });
       });
       describe("Users", () => {
         it("User1-POST new user to db", () => {
@@ -307,11 +495,49 @@ describe("", () => {
             .send({ body })
             .expect(201)
             .then(res => {
-              expect(res.body).to.contain.keys("newUser")
-              expect(res.body.newUser).to.contain.keys("username", "picture_url",
+              expect(res.body).to.contain.keys("newUser");
+              expect(res.body.newUser).to.contain.keys(
+                "username",
+                "picture_url",
                 "fullname",
                 "email",
-                "visitedLandmarks");
+                "visitedLandmarks"
+              );
+            });
+        });
+        it("User1A-POST responds 404 with faulty path", () => {
+          let body = {
+            username: "stamp-book-tester",
+            picture_url: null,
+            fullname: "Stamp Book",
+            email: "stampt@hotmail.com",
+            visitedLandmarks: []
+          };
+          return request
+            .post(`/api/usrs`)
+            .send({ body })
+            .expect(404)
+            .then(res => {
+              expect(res.body).to.be.an("Object");
+              expect(res.body).to.contain.keys("message");
+              expect(res.body.message).to.equal("Page not found");
+            });
+        });
+        it("User1B-POST responds 400 with faulty path", () => {
+          let body = {
+            picture_url: null,
+            fullname: "Stamp Book",
+            email: "stampt@hotmail.com",
+            visitedLandmarks: []
+          };
+          return request
+            .post(`/api/users`)
+            .send({ body })
+            .expect(400)
+            .then(res => {
+              expect(res.body).to.be.an("Object");
+              expect(res.body).to.contain.keys("message");
+              expect(res.body.message).to.equal("Bad Request: a required field is missing!");
             });
         });
       });

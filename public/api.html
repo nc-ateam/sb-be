@@ -20,7 +20,7 @@
   <p>Returns a JSON object of all supported countries.</p>
   <h1>GET <code>/api/countries/country_id</code></h1>
   <p>Returns a JSON object of a specific country by its ID.</p>
-  <h1>GET <code>/api/country/country_id/cities</code></h1>
+  <h1>GET <code>/api/countries/country_id/cities</code></h1>
   <p>Returns a JSON object of cities within the specified country ID.</p>
   <h1>GET <code>/api/cities</code></h1>
   <p>Returns a JSON object of all supported cities.</p>
@@ -32,7 +32,19 @@
   <p>Returns a JSON object of all supported landmarks.</p>
   <h1>GET <code>/api/landmarks/landmark_id</code></h1>
   <p>Returns a JSON object of a specific landmark based on its ID.</p>
-  <br/>
+  <h1>POST <code>/api/landmarks/:landmark_id/checkLandmark</code></h1>
+  <p>Post request body must look like the following - <code>{body: firebasedownloadURL}</code> </p>
+  <h1>GET <code>/api/photos</code></h1>
+  <p>Returns a JSON object of all photos.</p>
+  <h1>GET <code>/api/photos/:photo_id</code></h1>
+  <p>Returns a JSON object of a specific photo by its ID.</p>
+  <h1>GET <code>/api/users</code></h1>
+  <p>Returns a JSON object of all users.</p>
+  <h1>GET <code>/api/users/:user_id</code></h1>
+  <p>Returns a JSON object of a specific user by their ID.</p>
+  <h1>GET <code>/api/users/:user_id/photos</code></h1>
+  <p>Returns a JSON object of all photos owned by the specified user.</p>
+  <br />
   <p>If there are any issues with this API, please raise an issue on the <a href="https://github.com/nc-ateam/sb-be">project
       repository.
     </a></p>

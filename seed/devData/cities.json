@@ -4,7 +4,7 @@
     "geolocation": {
       "type": "Point",
       "coordinates":[-2.2426, 53.4808]},
-    "picture_url": "www.pictureurl.com",
+    "picture_url": "https://i.imgur.com/gs7tpIT.jpg",
     "belongs_to": "United Kingdom"
   },
   {
@@ -12,7 +12,7 @@
     "geolocation": {
       "type": "Point",
       "coordinates":[-2.0215345, 53.4405305]},
-    "picture_url": "www.pictureurl.com",
+    "picture_url": "https://i.imgur.com/ZAN5LNe.jpg",
     "belongs_to": "United Kingdom"
   }
 ]
