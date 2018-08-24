@@ -434,7 +434,7 @@ describe("", () => {
               expect(res.body.storedPhoto.firebase_url).to.equal(body);
             });
         });
-        it("Landmark2A- POST request,responds 400 with a url we arent able to work with", () => {
+        it.only("Landmark2A- POST request,responds 400 with a url we arent able to work with", () => {
           const landmarkId = landmarksDocs[0]._id;
           const body =
             "https://firebasestorage.googleapis.com/v0/b/my-project-1531828203931.appspot.com/o/cwright2F~-2.232817%2C53.4779652~cwrighpeg?alt=media&token=19672e68-2ec7-43ea-a8f7-0c3cfeb26b7c";
@@ -446,7 +446,7 @@ describe("", () => {
               expect(res.body).to.be.an("Object");
               expect(res.body).to.contain.keys("message");
               expect(res.body.message).to.equal(
-                "Bad Request: TypeError: Cannot read property '_id' of undefined"
+                "User info deprecated"
               );
             });
         });
