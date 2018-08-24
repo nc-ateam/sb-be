@@ -3,11 +3,8 @@
     "country": "United Kingdom",
     "geolocation": {
       "type": "Point",
-      "coordinates": [
-        "0.1278",
-        "51.5074"
-      ]
+      "coordinates": ["-3.435973", "55.378052"]
     },
-    "picture_url": "www.pictureurl.com"
+    "picture_url": "https://i.imgur.com/mxCsYdA.png"
   }
 ]
