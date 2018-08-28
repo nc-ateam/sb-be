@@ -5,7 +5,7 @@
       "type": "Point",
       "coordinates": [-2.2309113, 53.4774049]
     },
-    "georadius": 0.02,
+    "georadius": 0.0019911,
     "picture_url": "https://i.imgur.com/4SvFAVI.jpg",
     "info": "https://en.wikipedia.org/wiki/Manchester_Piccadilly_station",
     "belongs_to": "Manchester"
@@ -16,7 +16,7 @@
       "type": "Point",
       "coordinates": [-2.240189, 53.486044]
     },
-    "georadius": 0.02,
+    "georadius": 0.0019911,
     "picture_url": "https://i.imgur.com/CZxZbV7.jpg",
     "info": "www.northcoders.com",
     "belongs_to": "Manchester"
@@ -26,7 +26,8 @@
     "geolocation": {
       "type": "Point",
       "coordinates": [-2.006896, 53.438255]
-    },    "georadius": 0.02,
+    },
+    "georadius": 0.0019911,
     "picture_url": "https://i.imgur.com/iGr6WXn.jpg",
     "info": "www.lymefield.com",
     "belongs_to": "Broadbottom"
@@ -34,7 +35,7 @@
   {
     "landmark": "Etihad Stadium",
     "geolocation": { "type": "Point", "coordinates": [-2.200427, 53.483087] },
-    "georadius": 0.02,
+    "georadius": 0.0019911,
     "picture_url": "https://i.imgur.com/u7K3Wjm.jpg",
     "info": "https://en.wikipedia.org/wiki/City_of_Manchester_Stadium",
     "belongs_to": "Manchester"
@@ -50,7 +51,7 @@
   {
     "landmark": "Museum of Science and Industry",
     "geolocation": { "type": "Point", "coordinates": [-2.254445, 53.476933] },
-    "georadius": 0.02,
+    "georadius": 0.0019911,
     "picture_url": "https://i.imgur.com/ZVjHdSk.jpg",
     "info": "https://en.wikipedia.org/wiki/Museum_of_Science_and_Industry_(Manchester)",
     "belongs_to": "Manchester"
@@ -59,7 +60,7 @@
     "landmark": "Manchester Art Gallery",
 
     "geolocation": { "type": "Point", "coordinates": [-2.241765, 53.478829] },
-    "georadius": 0.02,
+    "georadius": 0.0019911,
     "picture_url": "https://i.imgur.com/LQ4fful.jpg",
     "info": "https://en.wikipedia.org/wiki/Manchester_Art_Gallery",
     "belongs_to": "Manchester"
@@ -67,7 +68,7 @@
   {
     "landmark": "Manchester Central Library",
     "geolocation": { "type": "Point", "coordinates": [-2.244275, 53.477891] },
-    "georadius": 0.02,
+    "georadius": 0.0019911,
     "picture_url": "https://i.imgur.com/qLaXrSP.jpg",
     "info": "https://en.wikipedia.org/wiki/Manchester_Central_Library",
     "belongs_to": "Manchester"
@@ -75,7 +76,7 @@
   {
     "landmark": "Piccadilly Gardens",
     "geolocation": { "type": "Point", "coordinates": [-2.236797, 53.480893] },
-    "georadius": 0.02,
+    "georadius": 0.0019911,
     "picture_url": "https://i.imgur.com/dQDwwGG.jpg",
     "info": "https://en.wikipedia.org/wiki/Piccadilly_Gardens",
     "belongs_to": "Manchester"
