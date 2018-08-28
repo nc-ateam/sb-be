@@ -43,7 +43,7 @@
   {
     "landmark": "National Football Museum",
     "geolocation": { "type": "Point", "coordinates": [-2.242457, 53.485677] },
-    "georadius": 0.02,
+    "georadius": 0.0019911,
     "picture_url": "https://i.imgur.com/hdu1Wjr.jpg",
     "info": "https://en.wikipedia.org/wiki/National_Football_Museum",
     "belongs_to": "Manchester"
