@@ -66,26 +66,22 @@ const checkAgainstLandmark = (req, res, next) => {
         geolocation: { $geoWithin: { $center: [numberRes, radius] } }
       }).then(location => {
         if (location.length === 0) {
-          res
-            .status(400)
-            .send({
-              message: `Sorry, that photo is not in the vicinty of ${
-                marker.landmark
-              }`
-            });
+          res.status(400).send({
+            message: `Sorry, that photo is not in the vicinty of ${
+              marker.landmark
+            }`
+          });
         }
         location.forEach(item => {
           if (`${item._id}` === req.params.landmarkId) {
             let postPhoto = {};
             User.find({ username: userName }).then(specificUser => {
-                if(specificUser.length === 0){
-                    res
-                      .status(400)
-                      .send({
-                        message: `User info deprecated`
-                      });
-                }
-              if (specificUser[0].visitedLandmarks.includes(`${item._id}`)) {
+              if (specificUser.length === 0) {
+                res.status(400).send({
+                  message: `User info deprecated`
+                });
+              }
+              if (!specificUser[0].visitedLandmarks.includes(`${item._id}`)) {
                 User.update(
                   { username: userName },
                   { $push: { visitedLandmarks: item._id } }
