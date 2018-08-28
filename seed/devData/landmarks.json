@@ -84,10 +84,6 @@
   {
     "landmark": "The John Rylands Libary",
     "geolocation": { "type": "Point", "coordinates": [-2.248749, 53.480237] },
-    "georadius": 0.02,
-    "picture_url": "https://www.google.co.uk/maps/place/The+John+Rylands+Library/@53.4803597,-2.2488212,3a,90y,28.38h,121.45t/data=!3m8!1e1!3m6!1sAF1QipORSFr5TTtwsOmn1XBT9U44HEwlOVKp9J8f-z3N!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipORSFr5TTtwsOmn1XBT9U44HEwlOVKp9J8f-z3N%3Dw203-h100-k-no-pi-28.92708-ya271.5052-ro0-fo100!7i7680!8i3840!4m13!1m7!3m6!1s0x487bb1bf73100639:0x67a100e10acc5a25!2sPiccadilly+Gardens,+Manchester+M60+1AY!3b1!8m2!3d53.4809634!4d-2.2369427!3m4!1s0x487bb1c302125cd1:0x8ecd789c6104b25c!8m2!3d53.4803143!4d-2.2487453#",
-    "info": "http://www.library.manchester.ac.uk/rylands/",
-    "geolocation": { "type": "Point", "coordinates": [-2.248749, 53.480237] },
     "georadius": 0.0019911,
     "picture_url": "https://i.imgur.com/lZ8oysT.jpg",
     "info": "https://en.wikipedia.org/wiki/John_Rylands_Library",
