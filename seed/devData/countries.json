@@ -3,11 +3,13 @@
     "country": "United Kingdom",
     "geolocation": {
       "type": "Point",
-      "coordinates": [
-        0.1278,
-        51.5074
-      ]
+      "coordinates": [0.1278, 51.5074]
     },
     "picture_url": "https://i.imgur.com/mxCsYdA.png"
+  },
+  {
+    "country": "France",
+    "geolocation": { "type": "Point", "coordinates": [2.349014, 48.864716] },
+    "picture_url": "https://i.imgur.com/XBGLJLJ.jpg"
   }
 ]
