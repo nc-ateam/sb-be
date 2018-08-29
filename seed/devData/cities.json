@@ -3,15 +3,35 @@
     "city": "Manchester",
     "geolocation": {
       "type": "Point",
-      "coordinates":[-2.2426, 53.4808]},
+      "coordinates": [-2.2426, 53.4808]
+    },
     "picture_url": "https://i.imgur.com/gs7tpIT.jpg",
+    "belongs_to": "United Kingdom"
+  },
+  {
+    "city": "London",
+    "geolocation": {
+      "type": "Point",
+      "coordinates": [-0.118092, 51.509865]
+    },
+    "picture_url": "https://i.imgur.com/yLB7Vj9.jpg",
+    "belongs_to": "United Kingdom"
+  },
+  {
+    "city": "Liverpool",
+    "geolocation": {
+      "type": "Point",
+      "coordinates": [-2.9915726, 53.4083714]
+    },
+    "picture_url": "https://i.imgur.com/DlMQgCk.jpg",
     "belongs_to": "United Kingdom"
   },
   {
     "city": "Broadbottom",
     "geolocation": {
       "type": "Point",
-      "coordinates":[-2.0215345, 53.4405305]},
+      "coordinates": [-2.0215345, 53.4405305]
+    },
     "picture_url": "https://i.imgur.com/ZAN5LNe.jpg",
     "belongs_to": "United Kingdom"
   }
