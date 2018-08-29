@@ -66,77 +66,82 @@ const checkAgainstLandmark = (req, res, next) => {
                 geolocation: { $geoWithin: { $center: [numberRes, radius] } }
             }).then((location) => {
                 // This is likely will need to change to Array.includes or something if more than one landmark in small area.
-                if (marker[0]._id !== location[0]._id) {
+                if (String(marker[0]._id) !== String(location[0]._id)) {
                     res.status(400).send({
                         message:
-                            'User is not in the vicinty of landmark when uploading.'
+                            'User is not in the vicinity of landmark when uploading.'
+                    });
+                } else {
+                    location.forEach((item) => {
+                        if (`${item._id}` === req.params.landmarkId) {
+                            let postPhoto = {};
+                            User.find({ username: userName }).then(
+                                (specificUser) => {
+                                    if (specificUser.length === 0) {
+                                        res.status(400).send({
+                                            message: 'User info deprecated'
+                                        });
+                                    }
+                                    if (
+                                        !specificUser[0].visitedLandmarks.includes(
+                                            `${item._id}`
+                                        )
+                                    ) {
+                                        User.update(
+                                            { username: userName },
+                                            {
+                                                $push: {
+                                                    visitedLandmarks: item._id
+                                                }
+                                            }
+                                        )
+                                            .then((response) => {
+                                                User.find({
+                                                    username: userName
+                                                }).then((user) => {
+                                                    postPhoto.belongs_to_user =
+                                                        user[0]._id;
+                                                    postPhoto.belongs_to_city =
+                                                        item.belongs_to;
+                                                    postPhoto.belongs_to_landmark =
+                                                        item._id;
+                                                    postPhoto.firebase_url =
+                                                        req.body.body;
+                                                    let newBody = new Photo(
+                                                        postPhoto
+                                                    );
+                                                    newBody
+                                                        .save()
+                                                        .then((storedPhoto) => {
+                                                            res.status(
+                                                                201
+                                                            ).send({
+                                                                storedPhoto
+                                                            });
+                                                        });
+                                                });
+                                            })
+                                            .catch(next);
+                                    } else {
+                                        postPhoto.belongs_to_user =
+                                            specificUser[0]._id;
+                                        postPhoto.belongs_to_city =
+                                            item.belongs_to;
+                                        postPhoto.belongs_to_landmark =
+                                            item._id;
+                                        postPhoto.firebase_url = req.body.body;
+                                        let newBody = new Photo(postPhoto);
+                                        newBody.save().then((storedPhoto) => {
+                                            res.status(201).send({
+                                                storedPhoto
+                                            });
+                                        });
+                                    }
+                                }
+                            );
+                        }
                     });
                 }
-                location.forEach((item) => {
-                    if (`${item._id}` === req.params.landmarkId) {
-                        let postPhoto = {};
-                        User.find({ username: userName }).then(
-                            (specificUser) => {
-                                if (specificUser.length === 0) {
-                                    res.status(400).send({
-                                        message: 'User info deprecated'
-                                    });
-                                }
-                                if (
-                                    !specificUser[0].visitedLandmarks.includes(
-                                        `${item._id}`
-                                    )
-                                ) {
-                                    User.update(
-                                        { username: userName },
-                                        {
-                                            $push: {
-                                                visitedLandmarks: item._id
-                                            }
-                                        }
-                                    )
-                                        .then((response) => {
-                                            User.find({
-                                                username: userName
-                                            }).then((user) => {
-                                                postPhoto.belongs_to_user =
-                                                    user[0]._id;
-                                                postPhoto.belongs_to_city =
-                                                    item.belongs_to;
-                                                postPhoto.belongs_to_landmark =
-                                                    item._id;
-                                                postPhoto.firebase_url =
-                                                    req.body.body;
-                                                let newBody = new Photo(
-                                                    postPhoto
-                                                );
-                                                newBody
-                                                    .save()
-                                                    .then((storedPhoto) => {
-                                                        res.status(201).send({
-                                                            storedPhoto
-                                                        });
-                                                    });
-                                            });
-                                        })
-                                        .catch(next);
-                                } else {
-                                    postPhoto.belongs_to_user =
-                                        specificUser[0]._id;
-                                    postPhoto.belongs_to_city = item.belongs_to;
-                                    postPhoto.belongs_to_landmark = item._id;
-                                    postPhoto.firebase_url = req.body.body;
-                                    let newBody = new Photo(postPhoto);
-                                    newBody.save().then((storedPhoto) => {
-                                        res.status(201).send({
-                                            storedPhoto
-                                        });
-                                    });
-                                }
-                            }
-                        );
-                    }
-                });
             });
         })
         .catch(next);
